@@ -14,7 +14,7 @@ const ImageGalleryApp = () => {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
   const [isEmptyData, setIsEmptyData] = useState(false);
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState("");
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [choseImg, setChoseImg] = useState(null);
@@ -26,8 +26,7 @@ const ImageGalleryApp = () => {
         setError(false);
         setIsEmptyData(false);
         const { results, total_pages } =
-          query && (await fetchSearchData({ query, page: page }));
-
+          query && (await fetchSearchData({ query, page }));
         results.length
           ? setImages((prev) => [...prev, ...results])
           : setIsEmptyData(true);
@@ -47,7 +46,7 @@ const ImageGalleryApp = () => {
   const handleSetQuery = (query) => {
     setQuery(query);
     setImages([]);
-    setPage(0);
+    setPage(1);
   };
   const openModal = () => {
     setIsOpenModal(true);

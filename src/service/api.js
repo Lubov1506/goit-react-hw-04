@@ -11,7 +11,7 @@ export const fetchData = async () => {
 };
 export const fetchSearchData = async ({ query, page }) => {
   const { data } = await axios.get("search/photos", {
-    params: { client_id: API_KEY, query: query, page: page },
+    params: { client_id: API_KEY, query, page },
   });
   return data;
 };
