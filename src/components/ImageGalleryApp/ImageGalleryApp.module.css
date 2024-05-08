@@ -36,7 +36,7 @@
       box-shadow: 1px 1px 1px 1px rgba(191, 179, 163, 0.619);
       padding: 10px;
       border-radius: 5px;
-      padding-left: 30px;
+      padding-left: 35px;
     }
     .btn_search {
       position: absolute;
@@ -128,6 +128,7 @@
     flex-direction: column;
     gap: 10px;
     .describe {
+      text-align: center;
       max-width: 80%;
       color: rgba(255, 255, 255, 0.719);
     }
