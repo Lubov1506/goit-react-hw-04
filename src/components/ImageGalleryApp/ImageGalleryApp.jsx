@@ -56,6 +56,7 @@ const ImageGalleryApp = () => {
   };
   const handleImgCardClick = (item) => {
     setChoseImg(item);
+    openModal();
   };
 
   return (
@@ -66,7 +67,6 @@ const ImageGalleryApp = () => {
         <>
           <ImageGallery
             images={images}
-            openModal={openModal}
             handleImgCardClick={handleImgCardClick}
           />
           {page < totalPages && (

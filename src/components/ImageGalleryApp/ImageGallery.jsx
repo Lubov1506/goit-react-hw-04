@@ -1,4 +1,3 @@
-import { nanoid } from "nanoid";
 import ImageCard from "./ImageCard";
 import s from "./ImageGalleryApp.module.css";
 
@@ -14,7 +13,7 @@ const ImageGallery = ({
         {images.map((item, idx) => {
           return (
             <ImageCard
-              key={nanoid()}
+              key={item.id}
               item={item}
               openModal={openModal}
               handleImgCardClick={handleImgCardClick}

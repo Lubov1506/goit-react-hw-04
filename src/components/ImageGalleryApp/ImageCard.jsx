@@ -1,11 +1,7 @@
-const ImageCard = ({ item, openModal, handleImgCardClick }) => {
+const ImageCard = ({ item, handleImgCardClick }) => {
   return (
     <li onClick={() => handleImgCardClick(item)}>
-      <img
-        src={item.urls.small}
-        alt={item.alt_description}
-        onClick={openModal}
-      />
+      <img src={item.urls.small} alt={item.alt_description} />
     </li>
   );
 };
