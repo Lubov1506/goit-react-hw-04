@@ -56,7 +56,6 @@ const ImageGalleryApp = () => {
     setIsOpenModal(false);
   };
   const handleImgCardClick = (item) => {
-    console.log(item);
     setChoseImg(item);
   };
 

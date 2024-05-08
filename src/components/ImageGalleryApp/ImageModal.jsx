@@ -3,9 +3,8 @@ import s from "./ImageGalleryApp.module.css";
 Modal.setAppElement("#root");
 import { IoMdClose } from "react-icons/io";
 import { FcLike } from "react-icons/fc";
-import { FaInstagram } from "react-icons/fa";
+
 const ImageModal = ({ isOpenModal, choseImg, closeModal }) => {
-  console.log(choseImg);
   return (
     <div>
       <Modal
