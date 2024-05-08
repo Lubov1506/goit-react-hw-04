@@ -4,9 +4,9 @@ import { fetchSearchData } from "../../service/api";
 import SearchBar from "./SearchBar";
 import ImageGallery from "./ImageGallery";
 import Loader from "./Loader";
-import Button from "./Button";
 import LoadMoreBtn from "./LoadMoreBtn";
 import EmptyResult from "./EmptyResult";
+import ImageModal from "./ImageModal";
 
 const ImageGalleryApp = () => {
   const [images, setImages] = useState([]);
@@ -14,8 +14,10 @@ const ImageGalleryApp = () => {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
   const [isEmptyData, setIsEmptyData] = useState(false);
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState("");
+  const [isOpenModal, setIsOpenModal] = useState(false);
+  const [choseImg, setChoseImg] = useState(null);
 
   useEffect(() => {
     const getData = async () => {
@@ -25,7 +27,7 @@ const ImageGalleryApp = () => {
         setIsEmptyData(false);
         const { results, total_pages } =
           query && (await fetchSearchData({ query, page: page }));
-        console.log(total_pages);
+
         results.length
           ? setImages((prev) => [...prev, ...results])
           : setIsEmptyData(true);
@@ -40,7 +42,6 @@ const ImageGalleryApp = () => {
   }, [page, query]);
 
   const handleChangePage = () => {
-    console.log("load more");
     setPage((prev) => prev + 1);
   };
   const handleSetQuery = (query) => {
@@ -48,12 +49,41 @@ const ImageGalleryApp = () => {
     setImages([]);
     setPage(0);
   };
+  const openModal = () => {
+    setIsOpenModal(true);
+  };
+  const closeModal = () => {
+    setIsOpenModal(false);
+  };
+  const handleImgCardClick = (item) => {
+    console.log(item);
+    setChoseImg(item);
+  };
+
   return (
     <div>
       <SearchBar handleSetQuery={handleSetQuery} />
-      {isEmptyData && <EmptyResult query={query}/>}
-      {images.length ? <ImageGallery images={images} /> : null}
-      {page < totalPages && <LoadMoreBtn handleChangePage={handleChangePage} />}
+      {isEmptyData && <EmptyResult query={query} />}
+      {images.length ? (
+        <>
+          <ImageGallery
+            images={images}
+            openModal={openModal}
+            handleImgCardClick={handleImgCardClick}
+          />
+          {page < totalPages && (
+            <LoadMoreBtn handleChangePage={handleChangePage} />
+          )}
+        </>
+      ) : null}
+      {choseImg && (
+        <ImageModal
+          isOpenModal={isOpenModal}
+          closeModal={closeModal}
+          choseImg={choseImg}
+        />
+      )}
+
       {loading && <Loader />}
     </div>
   );
