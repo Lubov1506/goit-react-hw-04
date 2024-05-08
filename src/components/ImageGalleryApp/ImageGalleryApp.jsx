@@ -14,7 +14,7 @@ const ImageGalleryApp = () => {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
   const [isEmptyData, setIsEmptyData] = useState(false);
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(0);
   const [totalPages, setTotalPages] = useState("");
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [choseImg, setChoseImg] = useState(null);
