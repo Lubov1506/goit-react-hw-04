@@ -54,7 +54,7 @@ const ImageGalleryApp = () => {
   const closeModal = () => {
     setIsOpenModal(false);
   };
-  const handleImgCardClick = (item) => {
+  const handleImageClick = (item) => {
     setChoseImg(item);
     openModal();
   };
@@ -65,10 +65,7 @@ const ImageGalleryApp = () => {
       {isEmptyData && <EmptyResult query={query} />}
       {images.length ? (
         <>
-          <ImageGallery
-            images={images}
-            handleImgCardClick={handleImgCardClick}
-          />
+          <ImageGallery images={images} onImageClick={handleImageClick} />
           {page < totalPages && (
             <LoadMoreBtn handleChangePage={handleChangePage} />
           )}

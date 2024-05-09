@@ -1,7 +1,11 @@
-const ImageCard = ({ item, handleImgCardClick }) => {
+const ImageCard = ({ item, onImageClick }) => {
   return (
-    <li onClick={() => handleImgCardClick(item)}>
-      <img src={item.urls.small} alt={item.alt_description} />
+    <li>
+      <img
+        src={item.urls.small}
+        alt={item.alt_description}
+        onClick={() => onImageClick(item)}
+      />
     </li>
   );
 };
